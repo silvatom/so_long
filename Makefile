@@ -1,0 +1,87 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
+#    Updated: 2022/01/29 22:17:25 by anjose-d         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+### FIRST TO BE EXECUTED
+.DEFAULT_GOAL	=	all
+
+### FINAL BINARY
+NAME		=	so_long
+
+### DIRECTORIES
+DIR_SRCS	=	./srcs
+DIR_INCS	=	./includes
+DIR_OBJS	=	./objs
+
+### STATIC LIBRARIES
+LIBFT		=	ft
+DIR_LIBFT	=	./libft
+INC_LIBFT	=	-L$(DIR_LIBFT) -l$(LIBFT)
+MLX			=	mlx
+DIR_MLX		=	./minilibx
+INC_MLX		=	-L$(DIR_MLX) -l$(MLX) -lXext -lX11
+
+### COMPILATION DETAILS
+CC			=	gcc
+CFLAGS		=	-Wall -Werror -Wextra -I $(DIR_INCS)
+DBGFLAGS	=	-g
+VALGFLAGS	=	-g3
+
+### SRC AND OBJ NAME FILES
+MAIN		=	main.c
+
+SRCS		=	$(MAIN) \
+				check_map.c
+				
+OBJS		=	$(SRCS:.c=.o)
+
+### PATH TO SRC AND OBJ FILES
+PATH_SRCS	=	$(addprefix $(DIR_SRCS)/, $(SRCS))
+PATH_OBJS	=	$(addprefix $(DIR_OBJS)/, $(OBJS))
+
+### TARGETS
+$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(PATH_OBJS)  
+	make -C $(DIR_LIBFT)
+	make -C $(DIR_MLX)
+	$(CC) $(CFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
+	@echo "Done!"
+	
+all: $(NAME)
+
+clean:
+	rm -f $(PATH_OBJS)
+	make $@ -C $(DIR_LIBFT)
+	make $@ -C $(DIR_MLX)
+
+fclean: clean
+	rm -f $(NAME)
+	make $@ -C $(DIR_LIBFT)
+
+re: fclean all
+
+debug: $(PATH_SRCS)
+	$(CC) $(CFLAGS) $(DBGFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
+
+norm:
+	norminette $(DIR_SRCS)
+	norminette $(DIR_INCS)
+	norminette $(DIR_LIBFT)
+	
+$(LIBFT):
+	make -C $(DIR_LIBFT)
+
+$(MLX):
+	make -C $(DIR_MLX)
+	
+.PHONY: all clean fclean re debug norm
