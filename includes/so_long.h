@@ -7,7 +7,7 @@
 # define FALSE 0
 
 /* CHECK ARGUMENTS */
-int 	check_arg(int argc, char *argv);
-void 	error_msg(char *errstr);
+int		check_arg(int argc, char *argv);
+void	error_msg(char *errstr);
 
 #endif
