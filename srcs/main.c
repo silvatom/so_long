@@ -13,9 +13,9 @@
 #include "so_long.h"
 #include <stdio.h>
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    if (check_arg(argc, argv[1]))
-        return (1);
-    return (0);
+	if (check_arg(argc, argv[1]))
+		return (1);
+	return (0);
 }

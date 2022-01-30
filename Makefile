@@ -74,9 +74,7 @@ debug: $(PATH_SRCS)
 	$(CC) $(CFLAGS) $(DBGFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
 
 norm:
-	norminette $(DIR_SRCS)
-	norminette $(DIR_INCS)
-	norminette $(DIR_LIBFT)
+	norminette $(DIR_SRCS) $(DIR_INCS) $(DIR_LIBFT)
 	
 $(LIBFT):
 	make -C $(DIR_LIBFT)
