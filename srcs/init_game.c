@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   init_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 22:51:07 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/01/29 23:13:10 by anjose-d         ###   ########.fr       */
+/*   Created: 2022/01/30 20:48:19 by anjose-d          #+#    #+#             */
+/*   Updated: 2022/01/30 23:17:39 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_arg(int argc, char *argv)
+int	init_game(t_game *game, char *map_arg)
 {
-	if (argc != 2)
-	{
-		error_msg("Wrong number of arguments!");
-		return (TRUE);
-	}
-	if (ft_extcheck(argv, ".ber"))
-	{
-		error_msg("File extension invalid!");
-		return (TRUE);
-	}
-	return (FALSE);
-}
+	t_map	map;
 
-void	error_msg(char *errstr)
-{
-	ft_putstr("Error: ");
-	ft_putstr(errstr);
-	ft_putstr("\n");
+	init_struct_map(&map);
+	game->map = map;
+	if (read_map(game, map_arg))
+		return (TRUE); //read and check
+	//save_map | allocate and save
+	return (FALSE);
 }

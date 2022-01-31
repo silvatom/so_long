@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/01/29 22:17:25 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/01/30 23:21:05 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ INC_MLX		=	-L$(DIR_MLX) -l$(MLX) -lXext -lX11
 
 ### COMPILATION DETAILS
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -I $(DIR_INCS)
+CFLAGS		=	 -I $(DIR_INCS)
 DBGFLAGS	=	-g
 VALGFLAGS	=	-g3
 
@@ -39,7 +39,9 @@ VALGFLAGS	=	-g3
 MAIN		=	main.c
 
 SRCS		=	$(MAIN) \
-				check_map.c
+				error_check.c \
+				map_read.c \
+				init_game.c init_struct.c
 				
 OBJS		=	$(SRCS:.c=.o)
 
@@ -76,10 +78,13 @@ debug: $(PATH_SRCS)
 norm:
 	norminette $(DIR_SRCS) $(DIR_INCS) $(DIR_LIBFT)
 	
+valgrind:
+	$@ --leak-check=full -s --show-leak-kinds=all --tool=memcheck ./$(NAME) maps/invalid_cols.ber
+	
 $(LIBFT):
 	make -C $(DIR_LIBFT)
 
 $(MLX):
 	make -C $(DIR_MLX)
 	
-.PHONY: all clean fclean re debug norm
+.PHONY: all clean fclean re debug norm valgrind

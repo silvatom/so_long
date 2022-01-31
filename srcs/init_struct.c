@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 18:06:45 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/01/30 23:24:25 by anjose-d         ###   ########.fr       */
+/*   Created: 2022/01/30 20:48:26 by anjose-d          #+#    #+#             */
+/*   Updated: 2022/01/30 23:17:51 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h>
 
-int	main(int argc, char *argv[])
+void	init_struct_map(t_map *map)
 {
-	t_game	game;
+	map->columns = 0;
+	map->lines = 0;
+	map->players = 0;
+	map->collectables = 0;
+}
 
-	if (check_arg(argc, argv[1]))
-		return (1);
-	if (init_game(&game, argv[1]))
-		return (2);
-	return (0);
+void	init_struct_game(t_game *game)
+{
+	game->moves = 0;
+	game->game_over = 0;
 }
