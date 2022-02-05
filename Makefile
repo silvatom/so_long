@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/05 11:11:24 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/05 17:09:19 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,19 +45,19 @@ SRCS		=	$(MAIN) \
 				game_end.c \
 				hooks_load_imgs.c
 
+DIR_GUARD	=	mkdir -p $(@D)
 
+OBJS		=	$(addprefix $(DIR_OBJS)/, $(SRCS:.c=.o))
 
-OBJS		=	$(SRCS:.c=.o)
-
-### PATH TO SRC AND OBJ FILES
+### PATH TO SRC FILES
 PATH_SRCS	=	$(addprefix $(DIR_SRCS)/, $(SRCS))
-PATH_OBJS	=	$(addprefix $(DIR_OBJS)/, $(OBJS))
 
 ### TARGETS
 $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
+	$(DIR_GUARD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(PATH_OBJS)
+$(NAME): $(OBJS)
 	make -C $(DIR_LIBFT)
 	make -C $(DIR_MLX)
 	$(CC) $(CFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
@@ -66,7 +66,7 @@ $(NAME): $(PATH_OBJS)
 all: $(NAME)
 
 clean:
-	rm -f $(PATH_OBJS)
+	rm -f $(OBJS)
 	make $@ -C $(DIR_LIBFT)
 	make $@ -C $(DIR_MLX)
 
