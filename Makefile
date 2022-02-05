@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/05 17:14:46 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/05 17:29:26 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,7 @@ PATH_SRCS	=	$(addprefix $(DIR_SRCS)/, $(SRCS))
 ### TARGETS
 $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
 	$(DIR_GUARD)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	make -C $(DIR_LIBFT)
