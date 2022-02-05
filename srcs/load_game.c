@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:53:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 16:23:39 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 17:23:43 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int		load_game(t_game *game)
 				load_map(game, lin, col);
 			else if (game->map.map[lin][col] == '0')
 				load_map(game, lin, col);
-			else if (game->map.map[lin][col] == 'C')
-				load_collects(game, lin, col);
+			// else if (game->map.map[lin][col] == 'C')
+			// 	load_collects(game, lin, col);
 			else if (game->map.map[lin][col] == 'E')
 				load_map(game, lin, col);
-			else if (game->map.map[lin][col] == 'P')
-				load_player(game, lin, col);
+			// else if (game->map.map[lin][col] == 'P')
+			// 	load_player(game, lin, col);
 			col++;
 		}
 		lin++;
