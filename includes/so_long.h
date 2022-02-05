@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/01/30 23:23:25 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/04 23:47:12 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,29 @@
 
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
+# include <mlx.h>
 
 # define TRUE 1
 # define FALSE 0
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
+# define IMG_SIZE 64
+
+
+# define P_UP "../imgs/player/p_down.xpm"
+
+# define EXIT_O "../imgs/exit/opened_exit.xpm"
+# define EXIT_C "../imgs/exit/closed_exit.xpm"
+
+# define ENEMY_1 "../imgs/enemy/enemy1.xpm"
+# define ENEMY_2 "../imgs/enemy/enemy2.xpm"
+
+# define FLOOR "../imgs/map/floor.xpm"
+# define WALL "../imgs/map/wall.xpm"
+# define COLLECTS "../imgs/collects/"
+
+
 
 typedef struct s_axis
 {
@@ -41,6 +57,13 @@ typedef struct s_data
 	t_axis	size;
 }				t_data;
 
+typedef struct s_check
+{
+	int	collectible;
+	int	exit;
+	int	players;
+}				t_check;
+
 typedef struct s_draw
 {
 	t_data	*player;
@@ -56,8 +79,10 @@ typedef struct s_map
 	char	**map;
 	int		columns;
 	int		lines;
-	int		players;
-	int		collectables;
+	// int		players;
+	// int		collectables;
+	t_check	check;
+	int		invalid;
 }				t_map;
 
 /* MAIN STRUCT */
@@ -78,11 +103,28 @@ int		check_fd(int fd);
 /* INIT STRUCTS */
 void	init_struct_game(t_game *game);
 void	init_struct_map(t_map *map);
+void	init_imgs(t_game *game);
 
-/* PRECISA DELA? */
+/* MAIN FUNCTION */
 int		init_game(t_game *game, char *map_arg);
 
 /* MAP READING */
 int		read_map(t_game *game, char *map_file);
+
+/* MAP CHECK */
+int		check_map(t_game *game);
+int		column_ncheck(char *line, t_game *game);
+int		check_item_count(t_game *game);
+void	check_item(t_game *game, char c);
+int		check_borders(t_game *game, char *map_file);
+
+/* MAP SAVING AND ALLOCATING */
+int		save_map(t_game *game, char *map_file);
+
+/* FREE ALLOCATIONS */
+void	end_game(t_game *game);
+
+/* HOOKS */
+int		load_imgs(t_game *game);
 
 #endif

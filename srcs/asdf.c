@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_read.c                                         :+:      :+:    :+:   */
+/*   asdf.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:03:53 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 00:17:53 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 00:15:56 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ int	read_map(t_game *game, char *map_file)
 {
 	if (count_lines(game, map_file) || count_columns(game, map_file))
 		return (TRUE);
-	if (check_borders(game, map_file))
-		return (TRUE);
+	
+	// while ((rline = get_next_line(fd)))
+	// {
+	// 	printf("%s", rline);
+	// 	free(rline);
+	// }
+	// free(rline);
 	return (FALSE);
 }
 

@@ -1,45 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_check.c                                      :+:      :+:    :+:   */
+/*   map_save.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 22:51:07 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/01/31 17:26:04 by anjose-d         ###   ########.fr       */
+/*   Created: 2022/02/01 23:53:47 by anjose-d          #+#    #+#             */
+/*   Updated: 2022/02/04 23:53:45 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
-int	check_arg(int argc, char *argv)
+int	save_map(t_game *game, char *map_file)
 {
-	if (argc != 2)
-	{
-		error_msg("Wrong number of arguments!");
-		return (TRUE);
-	}
-	if (ft_extcheck(argv, ".ber"))
-	{
-		error_msg("File extension invalid!");
-		return (TRUE);
-	}
-	return (FALSE);
-}
+	char	*rline;
+	char	*backup;
+	int		fd;
+	char	*temp;
+	int 	i;
 
-void	error_msg(char *errstr)
-{
-	ft_putstr("Error: ");
-	ft_putstr(errstr);
-	ft_putstr("\n");
-}
-
-int	check_fd(int fd)
-{
-	if (fd < 0)
-	{
-		error_msg("Can't open the file to read!");
+	fd = open(map_file, O_RDONLY);
+	if (check_fd(fd))
 		return (TRUE);
+	rline = get_next_line(fd);
+	backup = ft_strdup("");
+	i = 0;
+	while (i++ < game->map.lines)
+	{
+		temp = ft_strjoin(backup, rline);
+		free(rline);
+		free(backup);
+		backup = temp;
+		rline = get_next_line(fd);
 	}
+	free(rline);
+	game->map.map = ft_split(backup, '\n');
+	free(backup);
+	close(fd);
 	return (FALSE);
 }
