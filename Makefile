@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/05 17:29:26 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/05 17:43:01 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
 $(NAME): $(OBJS)
 	make -C $(DIR_LIBFT)
 	make -C $(DIR_MLX)
-	$(CC) $(CFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
+	$(CC) $(CFLAGS) $(INCFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
 	@echo "Done!"
 
 all: $(NAME)
