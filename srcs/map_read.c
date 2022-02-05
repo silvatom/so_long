@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:03:53 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 00:17:53 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 11:36:41 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	read_map(t_game *game, char *map_file)
 {
 	if (count_lines(game, map_file) || count_columns(game, map_file))
 		return (TRUE);
+	if (check_map(game) || column_ncheck(game, map_file))
+	 	return (TRUE);
 	if (check_borders(game, map_file))
-		return (TRUE);
+	 	return (TRUE);
 	return (FALSE);
 }
 
@@ -33,20 +35,16 @@ int	count_lines(t_game *game, char *map_file)
 	fd = open(map_file, O_RDONLY);
 	if (check_fd(fd))
 		return (TRUE);
-	while ((rline = get_next_line(fd)))
+	rline = get_next_line(fd);
+	while (rline)
 	{
 		game->map.lines++;
 		free(rline);
+		rline = get_next_line(fd);
 	}
-	close(fd);
 	free(rline);
-	if (game->map.lines > 2)
-		return (FALSE);
-	else
-	{
-		error_msg("Invalid number of lines in the map!");
-		return (TRUE);
-	}
+	close(fd);
+	return (FALSE);
 }
 // count lines
 	//já verifica estremidades
@@ -55,30 +53,26 @@ int	count_lines(t_game *game, char *map_file)
 
 int	count_columns(t_game *game, char *map_file)
 {
-	char	*fline;
 	int		fd;
+	int		column_s;
+	char	*rline;
+	char	*temp;
 
 	fd = open(map_file, O_RDONLY);
-	if (check_fd(fd))
+	if (check_fd(fd) || game->map.lines == 0)
 		return (TRUE);
-	fline = get_next_line(fd);
-	game->map.columns = ft_strlen(fline);
-	free(fline);
-	while ((fline = get_next_line(fd)))
+	rline = get_next_line(fd);
+	while (rline)
 	{
-		if (ft_strlen(fline) != game->map.columns)
-		{
-			free(fline);
-			error_msg("Different number of columns!");
-			return (TRUE);
-		}
-		free(fline);
+		temp = ft_strtrim(rline, "\n");
+		column_s = ft_strlen(temp);
+		if (column_s > game->map.columns)
+			game->map.columns = column_s;
+		free(rline);
+		free(temp);
+		rline = get_next_line(fd);
 	}
-	free(fline);
+	free(rline);
 	close(fd);
-	if (game->map.columns < 3)
-		error_msg("Invalid number of columns!");
-	if (game->map.columns == game->map.lines)
-		error_msg("Map is not a rectangle");
 	return (FALSE);
 }

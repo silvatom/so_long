@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 23:43:32 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/04 23:44:39 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 11:13:22 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int	load_imgs(t_game *game)
 {
-
+	printf("%d\n", game->map.columns);
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/04 23:46:37 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/05 11:11:24 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ INC_MLX		=	-L$(DIR_MLX) -l$(MLX) -lXext -lX11
 
 ### COMPILATION DETAILS
 CC			=	gcc
-CFLAGS		=	-I $(DIR_INCS) -I $(DIR_MLX)
+CFLAGS		=	-Wall -Werror -Wextra -I $(DIR_INCS) -I $(DIR_MLX)
 DBGFLAGS	=	-g
 VALGFLAGS	=	-g3
 

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 22:51:07 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/01/31 17:26:04 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 11:30:59 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ int	check_arg(int argc, char *argv)
 	return (FALSE);
 }
 
-void	error_msg(char *errstr)
+int	error_msg(char *errstr)
 {
 	ft_putstr("Error: ");
 	ft_putstr(errstr);
 	ft_putstr("\n");
+	return (TRUE);
 }
 
 int	check_fd(int fd)

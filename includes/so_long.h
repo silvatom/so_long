@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/04 23:47:12 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 11:32:47 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
+# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -97,7 +98,7 @@ typedef struct s_game
 
 /* ARGUMENT AND REGULAR CHECKS */
 int		check_arg(int argc, char *argv);
-void	error_msg(char *errstr);
+int		error_msg(char *errstr);
 int		check_fd(int fd);
 
 /* INIT STRUCTS */
@@ -113,7 +114,7 @@ int		read_map(t_game *game, char *map_file);
 
 /* MAP CHECK */
 int		check_map(t_game *game);
-int		column_ncheck(char *line, t_game *game);
+int		column_ncheck(t_game *game, char *map_file);
 int		check_item_count(t_game *game);
 void	check_item(t_game *game, char c);
 int		check_borders(t_game *game, char *map_file);
