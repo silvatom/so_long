@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 11:32:47 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 16:14:36 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ typedef struct s_map
 	char	**map;
 	int		columns;
 	int		lines;
-	// int		players;
-	// int		collectables;
 	t_check	check;
 	int		invalid;
 }				t_map;
@@ -93,6 +91,7 @@ typedef struct s_game
 	t_map	map;
 	t_draw	img;
 	int		moves;
+	int		collected;
 	int		game_over;
 }				t_game;
 
@@ -110,10 +109,10 @@ void	init_imgs(t_game *game);
 int		init_game(t_game *game, char *map_arg);
 
 /* MAP READING */
-int		read_map(t_game *game, char *map_file);
+int		map_read(t_game *game, char *map_file);
 
 /* MAP CHECK */
-int		check_map(t_game *game);
+int		map_check(t_game *game);
 int		column_ncheck(t_game *game, char *map_file);
 int		check_item_count(t_game *game);
 void	check_item(t_game *game, char c);

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 21:42:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 11:12:54 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 16:26:44 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ void	init_player(t_game *game);
 void	init_imgs(t_game *game)
 {
 	init_map(game);
-	init_itens(game);
+	//init_itens(game);
 	init_player(game);
-	printf("%d\n", game->map.columns);
 }
 
 void	init_map(t_game *game)
@@ -36,11 +35,10 @@ void	init_map(t_game *game)
 		&(game->img.wall->size.x), &(game->img.wall->size.y));
 }
 
-void	init_itens(t_game *game)
-{
-	printf("%d\n", game->map.columns);
-	// items;
-}
+// void	init_itens(t_game *game)
+// {
+// 	// items;
+// }
 
 void	init_player(t_game *game)
 {

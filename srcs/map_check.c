@@ -6,13 +6,13 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:54:30 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 11:35:37 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/05 12:40:47 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_map(t_game *game)
+int	map_check(t_game *game)
 {
 	if (game->map.lines == 0)
 	{
@@ -37,22 +37,6 @@ int	check_map(t_game *game)
 	return (FALSE);
 }
 
-// int	column_ncheck(char *line, t_game *game)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (line[i] != '\n' && line[i] != '\0')
-// 		i++;
-// 	if (i != game->map.columns)
-// 	{
-// 		error_msg("Some lines doesn't match the number of columns");
-// 		return (TRUE);
-// 	}
-// 	else
-// 		return (FALSE);
-// }
-
 int	column_ncheck(t_game *game, char *map_file)
 {
 	int		fd;
@@ -69,7 +53,7 @@ int	column_ncheck(t_game *game, char *map_file)
 	{
 		i = 0;
 		while (rline[i] != '\n' && rline[i] != '\0')
-			i++;
+			check_item(game, rline[i++]);
 		if (i != game->map.columns)
 			invalid = error_msg("Some lines doesn't match the size!");
 		free(rline);
