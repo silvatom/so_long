@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 07:08:09 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:10:27 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
+# include <X11/X.h>
+# include <X11/keysymdef.h>
+#include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -32,6 +35,18 @@
 # define FLOOR "./imgs/map/floor.xpm"
 # define WALL "./imgs/map/wall.xpm"
 # define COLLECTS "./imgs/collects/collect.xpm"
+
+/* KEYS */
+# define W 119
+# define A 97
+# define S 115
+# define D 110
+# define Q 113
+# define UP_ARROW 65362
+# define DOWN_ARROW 65364
+# define LEFT_ARROW 65361
+# define RIGHT_ARROW 65363
+# define ESC 65307
 
 typedef struct s_axis
 {
@@ -81,6 +96,7 @@ typedef struct s_game
 	int		moves;
 	int		collected;
 	int		game_over;
+	t_axis	pos;
 }				t_game;
 
 /* ARGUMENT AND REGULAR CHECKS */
@@ -89,8 +105,7 @@ int		error_msg(char *errstr);
 int		check_fd(int fd);
 
 /* INIT STRUCTS */
-void	init_struct_game(t_game *game);
-void	init_struct_map(t_map *map);
+void	init_struct_map(t_game *game);
 void	init_imgs(t_game *game);
 
 /* MAIN FUNCTION */
@@ -101,18 +116,18 @@ int		map_read(t_game *game, char *map_file);
 
 /* MAP CHECK */
 int		map_check(t_game *game);
-int		column_ncheck(t_game *game, char *map_file);
+int		column_check(t_game *game, char *map_file);
 int		check_item_count(t_game *game);
-void	check_item(t_game *game, char c);
 int		check_borders(t_game *game, char *map_file);
 
 /* MAP SAVING AND ALLOCATING */
 int		save_map(t_game *game, char *map_file);
 
 /* FREE ALLOCATIONS */
-void	end_game(t_game *game);
+int		end_game(t_game *game);
 
 /* HOOKS */
 int		load_game(t_game *game);
+int		key_mapping(int	keysym, t_game *game);
 
 #endif

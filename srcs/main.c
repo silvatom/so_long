@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 18:06:45 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 07:07:27 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 23:04:07 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	main(int argc, char *argv[])
 		return (2);
 	//mlx_hook teclas apertadas
 	//mlx_hook fechar janela
+	mlx_hook(game.mlx.win_ptr, KeyPress, KeyPressMask, key_mapping, &game);
+	mlx_hook(game.mlx.win_ptr, DestroyNotify, NoEventMask, &end_game, &game);
 	mlx_loop_hook(game.mlx.mlx_ptr, &load_game, &game);
 	mlx_loop(game.mlx.mlx_ptr);
-	end_game(&game);
 	return (0);
 }

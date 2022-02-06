@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:48:19 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 07:07:02 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 20:09:46 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	init_game(t_game *game, char *map_arg)
 {
 	t_map	map;
 
-	init_struct_map(&map);
 	game->map = map;
+	init_struct_map(game);
 	if (map_read(game, map_arg))
 		return (TRUE);
 	if (save_map(game, map_arg))

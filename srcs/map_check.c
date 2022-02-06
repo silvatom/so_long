@@ -6,11 +6,13 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:54:30 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 12:40:47 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 22:22:14 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static int	check_item(t_game *game, char *rline, int nline);
 
 int	map_check(t_game *game)
 {
@@ -37,27 +39,26 @@ int	map_check(t_game *game)
 	return (FALSE);
 }
 
-int	column_ncheck(t_game *game, char *map_file)
+int	column_check(t_game *game, char *map_file)
 {
 	int		fd;
-	int		i;
-	char	*rline;
+	int		lin;
 	int		invalid;
+	char	*rline;
 
 	fd = open(map_file, O_RDONLY);
 	if (check_fd(fd))
 		return (TRUE);
 	rline = get_next_line(fd);
 	invalid = 0;
+	lin = 0;
 	while (rline)
 	{
-		i = 0;
-		while (rline[i] != '\n' && rline[i] != '\0')
-			check_item(game, rline[i++]);
-		if (i != game->map.columns)
+		if (check_item(game, rline, lin) != game->map.columns)
 			invalid = error_msg("Some lines doesn't match the size!");
 		free(rline);
 		rline = get_next_line(fd);
+		lin++;
 	}
 	free(rline);
 	close(fd);
@@ -83,15 +84,44 @@ int	check_item_count(t_game *game)
 	return (FALSE);
 }
 
-void	check_item(t_game *game, char c)
+static int	check_item(t_game *game, char *rline, int nline)
 {
-	if (c == 'C')
-		game->map.check.collectible++;
-	else if (c == 'E')
-		game->map.check.exit++;
-	else if (c == 'P')
-		game->map.check.players++;
-	else if (c != 'C' && c != 'E' && c != 'P'
-		&& c != '1' && c != '0' && c != '\n')
-			game->map.invalid++;
+	int	col;
+
+	col = 0;
+	while (rline[col] != '\n' && rline[col] != '\0')
+	{
+		if (rline[col] == 'C')
+			game->map.check.collectible++;
+		else if (rline[col] == 'E')
+			game->map.check.exit++;
+		else if (rline[col] == 'P')
+		{
+			game->map.check.players++;
+			game->pos.x = col;
+			game->pos.y = nline;
+		}
+		else if (rline[col] != 'C' && rline[col] != 'E' && rline[col] != 'P'
+			&& rline[col] != '1' && rline[col] != '0' && rline[col] != '\n')
+				game->map.invalid++;
+		col++;
+	}
+	return (col);
 }
+
+// static void	check_item(t_game *game, int lin, int col, char c)
+// {
+// 	if (c == 'C')
+// 		game->map.check.collectible++;
+// 	else if (c == 'E')
+// 		game->map.check.exit++;
+// 	else if (c == 'P')
+// 	{
+// 		game->map.check.players++;
+// 		game->pos.x = col;
+// 		game->pos.y = lin;
+// 	}
+// 	else if (c != 'C' && c != 'E' && c != 'P'
+// 		&& c != '1' && c != '0' && c != '\n')
+// 			game->map.invalid++;
+// }

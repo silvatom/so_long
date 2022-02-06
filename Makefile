@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/06 06:37:13 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/06 22:44:42 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ SRCS		=	$(MAIN) \
 				init_struct.c init_game.c init_imgs.c \
 				map_read.c map_check.c map_borders_check.c map_save.c \
 				game_end.c \
-				hooks_load_game.c
+				hooks_load_game.c hooks_key_mapping.c
 
 DIR_GUARD	=	mkdir -p $(@D)
 
