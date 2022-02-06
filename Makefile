@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/06 00:04:51 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/06 06:37:13 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ NAME		=	so_long
 ### DIRECTORIES
 DIR_SRCS	=	./srcs
 DIR_INCS	=	./includes
+HEADER		=	$(DIR_INCS)/so_long.h
 DIR_OBJS	=	./objs
 
 ### STATIC LIBRARIES
@@ -35,6 +36,7 @@ CFLAGS		=
 INCFLAGS	=	-I $(DIR_INCS) -I $(DIR_MLX)
 DBGFLAGS	=	-g
 VALGFLAGS	=	-g3
+
 
 ### SRC AND OBJ NAME FILES
 MAIN		=	main.c
@@ -54,7 +56,7 @@ OBJS		=	$(addprefix $(DIR_OBJS)/, $(SRCS:.c=.o))
 PATH_SRCS	=	$(addprefix $(DIR_SRCS)/, $(SRCS))
 
 ### TARGETS
-$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c
+$(DIR_OBJS)/%.o: $(DIR_SRCS)/%.c $(HEADER)
 	$(DIR_GUARD)
 	$(CC) $(CFLAGS) $(INCFLAGS) -c $< -o $@
 

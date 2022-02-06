@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 06:22:13 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 07:03:54 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 # define ENEMY_1 "./imgs/enemy/enemy1.xpm"
 # define ENEMY_2 "./imgs/enemy/enemy2.xpm"
 
-# define FLOOR "./imgs/wall/wall.xpm"
-# define WALL "./imgs/floor/floor.xpm"
+# define FLOOR "./imgs/map/floor.xpm"
+# define WALL "./imgs/map/wall.xpm"
 # define COLLECTS "./imgs/collects/collect.xpm"
 
 
