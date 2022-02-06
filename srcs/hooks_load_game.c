@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:53:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 07:03:02 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 07:06:29 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	load_map(t_game *game, int lin, int col);
 static void	load_player(t_game *game, int lin, int col);
 static void	load_collects(t_game *game, int lin, int col);
 
-int			load_game(t_game *game)
+int	load_game(t_game *game)
 {
 	int	lin;
 	int	col;
@@ -51,7 +51,7 @@ static void	load_map(t_game *game, int lin, int col)
 			game->img.wall, col * IMG_SIZE, lin * IMG_SIZE);
 	else if (game->map.map[lin][col] == '0')
 		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
-			game->img.floor, col * IMG_SIZE, lin * IMG_SIZE);	
+			game->img.floor, col * IMG_SIZE, lin * IMG_SIZE);
 	else if (game->map.map[lin][col] == 'E'
 		&& game->collected != game->map.check.collectible)
 		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
@@ -72,4 +72,3 @@ static void	load_collects(t_game *game, int lin, int col)
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
 		game->img.collect, col * IMG_SIZE, lin * IMG_SIZE);
 }
-

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 23:53:47 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 12:40:32 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 07:08:45 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	save_map(t_game *game, char *map_file)
 	char	*backup;
 	int		fd;
 	char	*temp;
-	int 	i;
+	int		i;
 
 	fd = open(map_file, O_RDONLY);
 	if (check_fd(fd))

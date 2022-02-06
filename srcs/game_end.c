@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 23:12:25 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 16:27:11 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 07:09:05 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	end_game(t_game *game)
 
 static void	destroy_map(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < game->map.lines)
