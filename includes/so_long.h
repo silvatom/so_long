@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 16:14:36 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 06:22:13 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
-# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -26,17 +25,17 @@
 # define IMG_SIZE 64
 
 
-# define P_UP "../imgs/player/p_down.xpm"
+# define P_UP "./imgs/player/p_down.xpm"
 
-# define EXIT_O "../imgs/exit/opened_exit.xpm"
-# define EXIT_C "../imgs/exit/closed_exit.xpm"
+# define EXIT_O "./imgs/exit/opened_exit.xpm"
+# define EXIT_C "./imgs/exit/closed_exit.xpm"
 
-# define ENEMY_1 "../imgs/enemy/enemy1.xpm"
-# define ENEMY_2 "../imgs/enemy/enemy2.xpm"
+# define ENEMY_1 "./imgs/enemy/enemy1.xpm"
+# define ENEMY_2 "./imgs/enemy/enemy2.xpm"
 
-# define FLOOR "../imgs/map/floor.xpm"
-# define WALL "../imgs/map/wall.xpm"
-# define COLLECTS "../imgs/collects/"
+# define FLOOR "./imgs/wall/wall.xpm"
+# define WALL "./imgs/floor/floor.xpm"
+# define COLLECTS "./imgs/collects/collect.xpm"
 
 
 
@@ -52,12 +51,6 @@ typedef struct s_conn
 	void	*win_ptr;
 }				t_conn;
 
-typedef struct s_data
-{
-	void	*img;
-	t_axis	size;
-}				t_data;
-
 typedef struct s_check
 {
 	int	collectible;
@@ -67,12 +60,13 @@ typedef struct s_check
 
 typedef struct s_draw
 {
-	t_data	*player;
-	t_data	*wall;
-	t_data	*floor;
-	t_data	*exito;
-	t_data	*exitc;
-	t_data	*collectible;
+	void	*player;
+	void	*wall;
+	void	*floor;
+	void	*exito;
+	void	*exitc;
+	void	*collect;
+	t_axis	size;	
 }				t_draw;
 
 typedef struct s_map
@@ -125,6 +119,6 @@ int		save_map(t_game *game, char *map_file);
 void	end_game(t_game *game);
 
 /* HOOKS */
-int		load_imgs(t_game *game);
+int		load_game(t_game *game);
 
 #endif

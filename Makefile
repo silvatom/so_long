@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/05 17:43:01 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/06 00:04:51 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ INC_MLX		=	-L$(DIR_MLX) -l$(MLX) -lXext -lX11
 
 ### COMPILATION DETAILS
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	
 INCFLAGS	=	-I $(DIR_INCS) -I $(DIR_MLX)
 DBGFLAGS	=	-g
 VALGFLAGS	=	-g3
@@ -44,7 +44,7 @@ SRCS		=	$(MAIN) \
 				init_struct.c init_game.c init_imgs.c \
 				map_read.c map_check.c map_borders_check.c map_save.c \
 				game_end.c \
-				hooks_load_imgs.c
+				hooks_load_game.c
 
 DIR_GUARD	=	mkdir -p $(@D)
 
@@ -78,7 +78,7 @@ fclean: clean
 re: fclean all
 
 debug: $(PATH_SRCS)
-	$(CC) $(CFLAGS) $(DBGFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
+	$(CC) $(CFLAGS) $(INCFLAGS) $(DBGFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
 	gdb --tui ./$@
 
 norm:

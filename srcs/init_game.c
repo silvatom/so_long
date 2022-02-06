@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:48:19 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/05 12:45:20 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/06 04:51:26 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ int	init_game(t_game *game, char *map_arg)
 	 	return (TRUE);
 	game->mlx.mlx_ptr = mlx_init();
 	game->mlx.win_ptr = mlx_new_window(game->mlx.mlx_ptr, \
-		game->map.columns * IMG_SIZE, game->map.lines * IMG_SIZE, "so_long");// qual vai primeiro?
+		game->map.columns * IMG_SIZE, game->map.lines * IMG_SIZE, "so_long");
+	if (game->mlx.win_ptr == NULL)
+	{
+		// free geral
+	}
 	init_imgs(game);
 	// mlx_hook keypress
 	// mlx_hook click x

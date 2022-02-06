@@ -69,25 +69,17 @@ int	column_ncheck(t_game *game, char *map_file)
 int	check_item_count(t_game *game)
 {
 	if (game->map.invalid)
-	{
-		error_msg("The map has (an) invalid character(s)!");
-		return (TRUE);
-	}
+		return (error_msg("The map has (an) invalid character(s)!"));
 	if (game->map.check.players < 1)
-	{
-		error_msg("The map doesn't have a starting point!");
-		return (TRUE);
-	}
+		return (error_msg("The map doesn't have a starting point!"));
 	if (game->map.check.exit < 1)
-	{
-		error_msg("The map doesn't have an exit!");
-		return (TRUE);
-	}
+		return (error_msg("The map doesn't have an exit!"));
 	if (game->map.check.collectible < 1)
-	{
-		error_msg("The map doesn't have collectibles!");
-		return (TRUE);
-	}
+		return (error_msg("The map doesn't have collectibles!"));
+	if (game->map.check.players > 1)
+		return (error_msg("The map has more than 1 player!"));
+	if (game->map.check.exit > 1)
+		return (error_msg("The map has more than 1 exit!"));
 	return (FALSE);
 }
 
