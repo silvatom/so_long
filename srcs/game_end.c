@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 23:12:25 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 20:42:57 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/08 06:05:49 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@ static void	destroy_imgs(t_game *game);
 
 int	end_game(t_game *game)
 {
-	destroy_imgs(game);
-	mlx_clear_window(game->mlx.mlx_ptr, game->mlx.win_ptr);
-	mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.win_ptr);
-	mlx_destroy_display(game->mlx.mlx_ptr);
-	mlx_loop_end(game->mlx.mlx_ptr);
 	destroy_map(game);
-	free(game->mlx.mlx_ptr);
-	//free(game->mlx.win_ptr);
+	// destroy_imgs(game);
+	// mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.win_ptr);
+	// mlx_destroy_display(game->mlx.mlx_ptr);
+	// mlx_loop_end(game->mlx.mlx_ptr);
+	// free(game->mlx.mlx_ptr);
+	// free(game->mlx.win_ptr);
+	// free(game->mlx.mlx_ptr);
+	// free(game->mlx.win_ptr);
 	return (FALSE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 12:53:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 07:06:29 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/08 05:06:48 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static void	load_map(t_game *game, int lin, int col)
 		&& game->collected != game->map.check.collectible)
 		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
 			game->img.exitc, col * IMG_SIZE, lin * IMG_SIZE);
-	// else
-	// 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
-	// 		game->img.exitc->img, col * IMG_SIZE, lin * IMG_SIZE);
+	else
+		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
+			game->img.exito, col * IMG_SIZE, lin * IMG_SIZE);
 }
 
 static void	load_player(t_game *game, int lin, int col)
