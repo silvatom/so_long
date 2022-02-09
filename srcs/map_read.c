@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:03:53 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 22:18:48 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/08 21:15:45 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	map_read(t_game *game, char *map_file)
 	if (count_lines(game, map_file) || count_columns(game, map_file))
 		return (TRUE);
 	if (map_check(game) || column_check(game, map_file))
-	 	return (TRUE);
+		return (TRUE);
 	if (check_borders(game, map_file) || check_item_count(game))
-	 	return (TRUE);
+		return (TRUE);
 	return (FALSE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 21:42:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 07:02:37 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 05:47:53 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	init_map(t_game *game)
 		&(game->img.size.x), &(game->img.size.y));
 }
 
-void	init_itens(t_game *game)
+static void	init_itens(t_game *game)
 {
 	game->img.collect = mlx_xpm_file_to_image(game->mlx.mlx_ptr, \
 		COLLECTS, &(game->img.size.x), &(game->img.size.y));

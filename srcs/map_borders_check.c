@@ -6,15 +6,15 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/01 22:35:00 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/01 23:28:51 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 05:49:47 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_border_line(char *line);
-int	check_border_column(char *line, int map_cols);
-int	border_chckr(char *line, int nline, int map_lines, int map_columns);
+static int	check_border_line(char *line);
+static int	check_border_column(char *line, int map_cols);
+static int	border_chckr(char *line, int nline, int map_lines, int map_columns);
 
 int	check_borders(t_game *game, char *map_file)
 {
@@ -44,7 +44,7 @@ int	check_borders(t_game *game, char *map_file)
 	return (FALSE);
 }
 
-int	border_chckr(char *line, int nline, int map_lines, int map_columns)
+static int	border_chckr(char *line, int nline, int map_lines, int map_columns)
 {
 	if (nline == 1 || nline == map_lines)
 	{
@@ -65,7 +65,7 @@ int	border_chckr(char *line, int nline, int map_lines, int map_columns)
 	return (FALSE);
 }
 
-int	check_border_line(char *line)
+static int	check_border_line(char *line)
 {
 	int	i;
 
@@ -79,7 +79,7 @@ int	check_border_line(char *line)
 	return (FALSE);
 }
 
-int	check_border_column(char *line, int map_cols)
+static int	check_border_column(char *line, int map_cols)
 {
 	if (line[0] != '1' || line[map_cols - 1] != '1')
 		return (TRUE);

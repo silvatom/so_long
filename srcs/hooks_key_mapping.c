@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:10:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/08 05:48:31 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 05:41:59 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	move_player(t_game *game, int mv_lin, int mv_col, int key);
 static int	move_verify(t_game *game, int lin, int col, int key);
 static int	valid_key(int key);
 
-int	key_mapping(int	keysym, t_game *game)
+int	key_mapping(int keysym, t_game *game)
 {
 	int	lin;
 	int	col;
@@ -25,18 +25,16 @@ int	key_mapping(int	keysym, t_game *game)
 	col = game->pos.x;
 	if (keysym == ESC || keysym == Q)
 		end_game(game);
-	// else if (keysym == 'w' || keysym == UP_ARROW)
-	// 	lin--;
-	// else if (keysym == 'a' || keysym == LEFT_ARROW)
-	// 	col--;
-	// else if (keysym == 's' || keysym == DOWN_ARROW)
-	// 	lin++;
-	// else if (keysym == 'd' || keysym == RIGHT_ARROW)
-	// 	col++;
-	// if (game->game_over == 0)
-	// 	move_player(game, lin, col, keysym);
-	// //printf("%d\n", keysym);
-
+	else if (keysym == 'w' || keysym == UP_ARROW)
+		lin--;
+	else if (keysym == 'a' || keysym == LEFT_ARROW)
+		col--;
+	else if (keysym == 's' || keysym == DOWN_ARROW)
+		lin++;
+	else if (keysym == 'd' || keysym == RIGHT_ARROW)
+		col++;
+	if (game->game_over == 0)
+		move_player(game, lin, col, keysym);
 	return (FALSE);
 }
 
@@ -45,7 +43,7 @@ static void	move_player(t_game *game, int mv_lin, int mv_col, int key)
 	int	x;
 	int	y;
 	int	valid;
-	
+
 	y = game->pos.y;
 	x = game->pos.x;
 	valid = move_verify(game, mv_lin, mv_col, key);
@@ -57,17 +55,17 @@ static void	move_player(t_game *game, int mv_lin, int mv_col, int key)
 		game->pos.y = mv_lin;
 		game->pos.x = mv_col;
 		load_game(game);
-		printf("Moves: %d\n", game->moves);
+		// colocar print aqui pra imprimir moves!
 	}
 }
 
 static int	move_verify(t_game *game, int lin, int col, int key)
 {
 	if (!valid_key(key))
-			return (0);
+		return (0);
 	if (game->map.map[lin][col] == '1')
 		return (0);
-	else if (game->map.map[lin][col] == 'E' 
+	else if (game->map.map[lin][col] == 'E'
 		&& game->collected == game->map.check.collectible)
 	{
 		game->map.map[game->pos.y][game->pos.x] = '0';
@@ -79,7 +77,6 @@ static int	move_verify(t_game *game, int lin, int col, int key)
 	if (game->map.map[lin][col] == 'C')
 		game->collected++;
 	return (1);
-	
 }
 
 static int	valid_key(int key)

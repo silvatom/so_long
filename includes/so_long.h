@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 23:10:27 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 05:52:26 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysymdef.h>
-#include <stdio.h>
+# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -128,6 +128,6 @@ int		end_game(t_game *game);
 
 /* HOOKS */
 int		load_game(t_game *game);
-int		key_mapping(int	keysym, t_game *game);
+int		key_mapping(int keysym, t_game *game);
 
 #endif

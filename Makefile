@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/08 05:24:48 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/09 05:42:46 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ INC_MLX		=	-L$(DIR_MLX) -l$(MLX) -lXext -lX11
 
 ### COMPILATION DETAILS
 CC			=	gcc
-CFLAGS		=	
+CFLAGS		=	-Wall -Wextra -Werror
 INCFLAGS	=	-I $(DIR_INCS) -I $(DIR_MLX)
 DBGFLAGS	=	-g
 VALGFLAGS	=	-g3
@@ -87,7 +87,7 @@ norm:
 	norminette $(DIR_SRCS) $(DIR_INCS) $(DIR_LIBFT)
 
 valgrind:
-	$@ --leak-check=full -s --show-leak-kinds=all --tool=memcheck ./$(NAME) maps/valid_map1.ber
+	$@ --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) maps/valid_map1.ber
 
 $(LIBFT):
 	make -C $(DIR_LIBFT)

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 23:54:30 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 22:22:14 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 05:51:34 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,20 +108,3 @@ static int	check_item(t_game *game, char *rline, int nline)
 	}
 	return (col);
 }
-
-// static void	check_item(t_game *game, int lin, int col, char c)
-// {
-// 	if (c == 'C')
-// 		game->map.check.collectible++;
-// 	else if (c == 'E')
-// 		game->map.check.exit++;
-// 	else if (c == 'P')
-// 	{
-// 		game->map.check.players++;
-// 		game->pos.x = col;
-// 		game->pos.y = lin;
-// 	}
-// 	else if (c != 'C' && c != 'E' && c != 'P'
-// 		&& c != '1' && c != '0' && c != '\n')
-// 			game->map.invalid++;
-// }

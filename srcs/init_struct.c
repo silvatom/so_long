@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:48:26 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/06 21:22:26 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 05:45:53 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ static void	init_struct_game(t_game *game);
 
 void	init_struct_map(t_game *game)
 {
-	game->map.columns = 0;
-	game->map.lines = 0;
-	game->map.invalid = 0;
-	game->map.check.collectible = 0;
-	game->map.check.exit = 0;
-	game->map.check.players = 0;
+	t_map	map;
+
+	map.columns = 0;
+	map.lines = 0;
+	map.invalid = 0;
+	map.check.collectible = 0;
+	map.check.exit = 0;
+	map.check.players = 0;
+	game->map = map;
 	init_struct_game(game);
 }
 
