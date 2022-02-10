@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: coder <coder@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/09 05:42:46 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/10 05:58:27 by coder            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ norm:
 	norminette $(DIR_SRCS) $(DIR_INCS) $(DIR_LIBFT)
 
 valgrind:
-	$@ --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) maps/valid_map1.ber
+	$@ --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) maps/valid_map2.ber
 
 $(LIBFT):
 	make -C $(DIR_LIBFT)

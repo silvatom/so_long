@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_key_mapping.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: coder <coder@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:10:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/09 05:41:59 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/10 06:00:47 by coder            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	move_player(t_game *game, int mv_lin, int mv_col, int key);
 static int	move_verify(t_game *game, int lin, int col, int key);
 static int	valid_key(int key);
+static void	print_moves(long int nbr, int fd);
 
 int	key_mapping(int keysym, t_game *game)
 {
@@ -55,7 +56,7 @@ static void	move_player(t_game *game, int mv_lin, int mv_col, int key)
 		game->pos.y = mv_lin;
 		game->pos.x = mv_col;
 		load_game(game);
-		// colocar print aqui pra imprimir moves!
+		print_moves(game->moves, 1);
 	}
 }
 
@@ -89,4 +90,11 @@ static int	valid_key(int key)
 		return (TRUE);
 	}
 	return (FALSE);
+}
+
+static void	print_moves(long int nbr, int fd)
+{
+	ft_putstr("Moves: ");
+	ft_putnbr_fd(nbr, fd);
+	ft_putstr("\n");
 }
