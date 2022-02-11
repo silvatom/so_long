@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_read.c                                         :+:      :+:    :+:   */
+/*   bonus_map_read.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/30 21:03:53 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 00:34:30 by anjose-d         ###   ########.fr       */
+/*   Created: 2022/02/11 00:33:52 by anjose-d          #+#    #+#             */
+/*   Updated: 2022/02/11 00:40:37 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	count_lines(t_game *game, char *map_file);
 int	count_columns(t_game *game, char *map_file);

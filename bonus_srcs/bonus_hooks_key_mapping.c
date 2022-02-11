@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_key_mapping.c                                :+:      :+:    :+:   */
+/*   bonus_hooks_key_mapping.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 21:10:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 05:55:45 by anjose-d         ###   ########.fr       */
+/*   Created: 2022/02/11 00:32:57 by anjose-d          #+#    #+#             */
+/*   Updated: 2022/02/11 05:56:51 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	move_player(t_game *game, int mv_lin, int mv_col, int key);
 static int	move_verify(t_game *game, int lin, int col, int key);
@@ -22,6 +22,8 @@ int	key_mapping(int keysym, t_game *game)
 	int	lin;
 	int	col;
 
+	if (keysym != 0)
+		game->map.side = keysym;
 	lin = game->pos.y;
 	col = game->pos.x;
 	if (keysym == ESC || keysym == Q || keysym == 'Q')
@@ -50,6 +52,7 @@ static void	move_player(t_game *game, int mv_lin, int mv_col, int key)
 	valid = move_verify(game, mv_lin, mv_col, key);
 	if (valid)
 	{
+		game->map.side = key;
 		game->moves++;
 		game->map.map[y][x] = '0';
 		game->map.map[mv_lin][mv_col] = 'P';
@@ -85,7 +88,7 @@ static int	valid_key(int key)
 	if (key == W || key == A || key == S || key == D)
 		return (TRUE);
 	if (key == UP_ARROW || key == DOWN_ARROW \
-		|| key == LEFT_ARROW || key != RIGHT_ARROW)
+		|| key == LEFT_ARROW || key == RIGHT_ARROW)
 	{
 		return (TRUE);
 	}

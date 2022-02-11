@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_imgs.c                                        :+:      :+:    :+:   */
+/*   bonus_init_imgs.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 21:42:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 00:22:16 by anjose-d         ###   ########.fr       */
+/*   Created: 2022/02/11 00:33:17 by anjose-d          #+#    #+#             */
+/*   Updated: 2022/02/11 05:59:29 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	init_map(t_game *game);
 static void	init_itens(t_game *game);
@@ -43,6 +43,15 @@ static void	init_itens(t_game *game)
 
 static void	init_player(t_game *game)
 {
-	game->img.player = mlx_xpm_file_to_image(game->mlx.mlx_ptr, P_DOWN, \
+	t_player	player;
+
+	player.up = mlx_xpm_file_to_image(game->mlx.mlx_ptr, P_UP, \
 		&(game->img.size.x), &(game->img.size.y));
+	player.down = mlx_xpm_file_to_image(game->mlx.mlx_ptr, P_DOWN, \
+		&(game->img.size.x), &(game->img.size.y));
+	player.right = mlx_xpm_file_to_image(game->mlx.mlx_ptr, P_RIGHT, \
+		&(game->img.size.x), &(game->img.size.y));
+	player.left = mlx_xpm_file_to_image(game->mlx.mlx_ptr, P_LEFT, \
+		&(game->img.size.x), &(game->img.size.y));
+	game->img.player = player;
 }

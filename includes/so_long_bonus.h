@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 05:51:25 by anjose-d         ###   ########.fr       */
+/*   Created: 2022/02/11 05:45:32 by anjose-d          #+#    #+#             */
+/*   Updated: 2022/02/11 05:50:46 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
@@ -28,6 +28,10 @@
 # define IMG_SIZE 64
 
 # define P_DOWN "./imgs/player/p_down.xpm"
+# define P_UP "./imgs/player/p_up.xpm"
+# define P_RIGHT "./imgs/player/p_right.xpm"
+# define P_LEFT "./imgs/player/p_left.xpm"
+
 # define EXIT_O "./imgs/exit/opened_exit.xpm"
 # define EXIT_C "./imgs/exit/closed_exit.xpm"
 # define ENEMY_1 "./imgs/enemy/enemy1.xpm"
@@ -67,15 +71,23 @@ typedef struct s_check
 	int	players;
 }				t_check;
 
+typedef struct s_player
+{
+	void	*up;
+	void	*down;
+	void	*left;
+	void	*right;
+}				t_player;
+
 typedef struct s_draw
 {
-	void	*player;
-	void	*wall;
-	void	*floor;
-	void	*exito;
-	void	*exitc;
-	void	*collect;
-	t_axis	size;	
+	t_player	player;
+	void		*wall;
+	void		*floor;
+	void		*exito;
+	void		*exitc;
+	void		*collect;
+	t_axis		size;	
 }				t_draw;
 
 typedef struct s_map
@@ -85,6 +97,7 @@ typedef struct s_map
 	int		lines;
 	t_check	check;
 	int		invalid;
+	int		side;
 }				t_map;
 
 /* MAIN STRUCT */
