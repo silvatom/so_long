@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:45:32 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 05:50:46 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/12 08:21:06 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysymdef.h>
-# include <stdio.h>
+# include <time.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -38,7 +38,10 @@
 # define ENEMY_2 "./imgs/enemy/enemy2.xpm"
 # define FLOOR "./imgs/map/floor.xpm"
 # define WALL "./imgs/map/wall.xpm"
-# define COLLECTS "./imgs/collects/collect.xpm"
+# define COLLECT1 "./imgs/collects/collect1.xpm"
+# define COLLECT2 "./imgs/collects/collect2.xpm"
+# define COLLECT3 "./imgs/collects/collect3.xpm"
+# define COLLECT4 "./imgs/collects/collect4.xpm"
 
 /* KEYS */
 # define Q 113
@@ -51,12 +54,19 @@
 # define LEFT_ARROW 65361
 # define RIGHT_ARROW 65363
 # define ESC 65307
+# define SPRITES 4
 
 typedef struct s_axis
 {
 	int	x;
 	int	y;
 }				t_axis;
+
+typedef struct s_spritecntl
+{
+	long unsigned int	init_time;
+	long unsigned int	delta_time;
+}				t_spritecntl;
 
 typedef struct s_conn
 {
@@ -69,6 +79,7 @@ typedef struct s_check
 	int	collectible;
 	int	exit;
 	int	players;
+	int	enemy;
 }				t_check;
 
 typedef struct s_player
@@ -79,6 +90,14 @@ typedef struct s_player
 	void	*right;
 }				t_player;
 
+typedef struct s_sprite
+{
+	void	*sprite1;
+	void	*sprite2;
+	void	*sprite3;
+	void	*sprite4;
+}				t_sprite;
+
 typedef struct s_draw
 {
 	t_player	player;
@@ -86,7 +105,8 @@ typedef struct s_draw
 	void		*floor;
 	void		*exito;
 	void		*exitc;
-	void		*collect;
+	t_sprite	enemy;
+	t_sprite	collect;
 	t_axis		size;	
 }				t_draw;
 
@@ -103,13 +123,15 @@ typedef struct s_map
 /* MAIN STRUCT */
 typedef struct s_game
 {
-	t_conn	mlx;
-	t_map	map;
-	t_draw	img;
-	int		moves;
-	int		collected;
-	int		game_over;
-	t_axis	pos;
+	t_conn			mlx;
+	t_map			map;
+	t_draw			img;
+	int				moves;
+	int				collected;
+	int				game_over;
+	int				died;
+	t_spritecntl	sprite_cntl;
+	t_axis			pos;
 }				t_game;
 
 /* ARGUMENT AND REGULAR CHECKS */
@@ -142,5 +164,6 @@ int		end_game(t_game *game);
 /* HOOKS */
 int		load_game(t_game *game);
 int		key_mapping(int keysym, t_game *game);
+void	delta_time(t_game *game);
 
 #endif

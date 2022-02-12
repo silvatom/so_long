@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:39 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 00:40:34 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/12 06:23:49 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ int	column_check(t_game *game, char *map_file)
 	while (rline)
 	{
 		if (check_item(game, rline, lin) != game->map.columns)
-			invalid = error_msg("Some lines doesn't match the size!");
+		{
+			if (!invalid)
+				invalid = error_msg("Some lines doesn't match the size!");
+		}
 		free(rline);
 		rline = get_next_line(fd);
 		lin++;
@@ -81,6 +84,8 @@ int	check_item_count(t_game *game)
 		return (error_msg("The map has more than 1 player!"));
 	if (game->map.check.exit > 1)
 		return (error_msg("The map has more than 1 exit!"));
+	if (game->map.check.enemy < 1)
+		return (error_msg("The map hasn't enemies!"));
 	return (FALSE);
 }
 
@@ -101,8 +106,11 @@ static int	check_item(t_game *game, char *rline, int nline)
 			game->pos.x = col;
 			game->pos.y = nline;
 		}
+		else if (rline[col] == 'F')
+			game->map.check.enemy++;
 		else if (rline[col] != 'C' && rline[col] != 'E' && rline[col] != 'P'
-			&& rline[col] != '1' && rline[col] != '0' && rline[col] != '\n')
+			&& rline[col] != '1' && rline[col] != '0' && rline[col] != '\n'
+			&& rline[col] != 'F')
 				game->map.invalid++;
 		col++;
 	}

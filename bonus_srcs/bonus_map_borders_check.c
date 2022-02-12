@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:34 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 00:40:31 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/12 06:44:35 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	check_borders(t_game *game, char *map_file)
 		}
 		free(rline);
 	}
+	rline = get_next_line(fd);
+	free(rline);
 	close(fd);
 	if (invalid)
 		return (TRUE);

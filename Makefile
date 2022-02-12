@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/11 05:57:34 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/12 06:25:16 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ DIR_MLX		=	./minilibx
 INC_MLX		=	-L$(DIR_MLX) -l$(MLX) -lXext -lX11
 
 ### COMPILATION DETAILS
-CC			=	gcc
-CFLAGS		=	
+CC			=	gcc -g3
+CFLAGS		=	-Wall -Wextra -Werror
 INCFLAGS	=	-I $(DIR_INCS) -I $(DIR_MLX)
 DBGFLAGS	=	-g
 
@@ -40,7 +40,7 @@ DBGFLAGS	=	-g
 MAIN		=	main.c
 
 SRCS		=	$(MAIN) \
-				error_check.c \
+				check_utils.c \
 				init_struct.c init_game.c init_imgs.c \
 				map_read.c map_check.c map_borders_check.c map_save.c \
 				game_end.c \
@@ -58,7 +58,7 @@ BNS_NAME	=	$(NAME)_bonus
 BNS_HEADER	=	$(DIR_INCS)/so_long_bonus.h
 DIR_SRCBNS	=	./bonus_srcs
 SRCS_BONUS	=	bonus_$(MAIN) \
-				bonus_error_check.c \
+				bonus_check_utils.c \
 				bonus_init_struct.c bonus_init_game.c bonus_init_imgs.c \
 				bonus_map_read.c bonus_map_check.c bonus_map_borders_check.c bonus_map_save.c \
 				bonus_game_end.c \
@@ -120,7 +120,7 @@ valgrind:
 	$@ $(VALGFLAGS) --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) maps/valid_map1.ber
 
 valgrind_bonus:
-	valgrind $(VALGFLAGS) --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(BNS_NAME) maps/valid_map1.ber
+	valgrind $(VALGFLAGS) --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(BNS_NAME) maps/bonus_valid_map1.ber
 
 $(LIBFT):
 	make -C $(DIR_LIBFT)

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:04 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 05:59:05 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/12 06:48:01 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	load_map(t_game *game, int lin, int col);
 static void	load_player(t_game *game, int lin, int col);
 static void	load_collects(t_game *game, int lin, int col);
+static void	load_enemy(t_game *game, int lin, int col);
 
 int	load_game(t_game *game)
 {
@@ -22,6 +23,7 @@ int	load_game(t_game *game)
 	int	col;
 
 	lin = 0;
+	delta_time(game);
 	while (game->map.map[lin])
 	{
 		col = 0;
@@ -37,6 +39,8 @@ int	load_game(t_game *game)
 				load_map(game, lin, col);
 			else if (game->map.map[lin][col] == 'P')
 				load_player(game, lin, col);
+			else if (game->map.map[lin][col] == 'F')
+				load_enemy(game, lin, col);
 			col++;
 		}
 		lin++;
@@ -91,6 +95,26 @@ static void	load_player(t_game *game, int lin, int col)
 
 static void	load_collects(t_game *game, int lin, int col)
 {
-	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
-		game->img.collect, col * IMG_SIZE, lin * IMG_SIZE);
+	if (game->sprite_cntl.delta_time == 1)
+		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
+			game->img.collect.sprite1, col * IMG_SIZE, lin * IMG_SIZE);
+	else if (game->sprite_cntl.delta_time == 2)
+		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
+			game->img.collect.sprite2, col * IMG_SIZE, lin * IMG_SIZE);
+	else if (game->sprite_cntl.delta_time == 3)
+		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
+			game->img.collect.sprite3, col * IMG_SIZE, lin * IMG_SIZE);
+	else if (game->sprite_cntl.delta_time == 4)
+		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
+			game->img.collect.sprite4, col * IMG_SIZE, lin * IMG_SIZE);
+}
+
+static void	load_enemy(t_game *game, int lin, int col)
+{
+	if (game->sprite_cntl.delta_time % 2 == 0)
+		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
+			game->img.enemy.sprite1, col * IMG_SIZE, lin * IMG_SIZE);
+	if (game->sprite_cntl.delta_time % 2 != 0)
+		mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr, \
+			game->img.enemy.sprite2, col * IMG_SIZE, lin * IMG_SIZE);
 }

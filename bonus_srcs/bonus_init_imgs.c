@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:17 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 05:59:29 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/12 04:37:55 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 static void	init_map(t_game *game);
 static void	init_itens(t_game *game);
 static void	init_player(t_game *game);
+static void	init_enemy(t_game *game);
 
 void	init_imgs(t_game *game)
 {
 	init_map(game);
 	init_itens(game);
 	init_player(game);
+	init_enemy(game);
 }
 
 static void	init_map(t_game *game)
@@ -37,8 +39,17 @@ static void	init_map(t_game *game)
 
 static void	init_itens(t_game *game)
 {
-	game->img.collect = mlx_xpm_file_to_image(game->mlx.mlx_ptr, \
-		COLLECTS, &(game->img.size.x), &(game->img.size.y));
+	t_sprite	collect;
+
+	collect.sprite1 = mlx_xpm_file_to_image(game->mlx.mlx_ptr, \
+		COLLECT1, &(game->img.size.x), &(game->img.size.y));
+	collect.sprite2 = mlx_xpm_file_to_image(game->mlx.mlx_ptr, \
+		COLLECT2, &(game->img.size.x), &(game->img.size.y));
+	collect.sprite3 = mlx_xpm_file_to_image(game->mlx.mlx_ptr, \
+		COLLECT3, &(game->img.size.x), &(game->img.size.y));
+	collect.sprite4 = mlx_xpm_file_to_image(game->mlx.mlx_ptr, \
+		COLLECT4, &(game->img.size.x), &(game->img.size.y));
+	game->img.collect = collect;
 }
 
 static void	init_player(t_game *game)
@@ -54,4 +65,15 @@ static void	init_player(t_game *game)
 	player.left = mlx_xpm_file_to_image(game->mlx.mlx_ptr, P_LEFT, \
 		&(game->img.size.x), &(game->img.size.y));
 	game->img.player = player;
+}
+
+static void	init_enemy(t_game *game)
+{
+	t_sprite	enemy;
+
+	enemy.sprite1 = mlx_xpm_file_to_image(game->mlx.mlx_ptr, ENEMY_1, \
+		&(game->img.size.x), &(game->img.size.y));
+	enemy.sprite2 = mlx_xpm_file_to_image(game->mlx.mlx_ptr, ENEMY_2, \
+		&(game->img.size.x), &(game->img.size.y));
+	game->img.enemy = enemy;
 }

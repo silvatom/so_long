@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_error_check.c                                :+:      :+:    :+:   */
+/*   bonus_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:32:45 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 00:39:26 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/12 07:13:28 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,11 @@ int	check_fd(int fd)
 		return (TRUE);
 	}
 	return (FALSE);
+}
+
+void	delta_time(t_game *game)
+{
+	game->sprite_cntl.delta_time = time(0) - game->sprite_cntl.init_time + 1;
+	if (game->sprite_cntl.delta_time > SPRITES)
+		game->sprite_cntl.init_time = time(0);
 }

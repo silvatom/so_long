@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:32:51 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 00:42:05 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/12 01:49:50 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ static void	destroy_map(t_game *game)
 
 static void	destroy_imgs(t_game *game)
 {
-	mlx_destroy_image(game->mlx.mlx_ptr, game->img.collect);
+	mlx_destroy_image(game->mlx.mlx_ptr, game->img.collect.sprite1);
+	mlx_destroy_image(game->mlx.mlx_ptr, game->img.collect.sprite2);
+	mlx_destroy_image(game->mlx.mlx_ptr, game->img.collect.sprite3);
+	mlx_destroy_image(game->mlx.mlx_ptr, game->img.collect.sprite4);
+	mlx_destroy_image(game->mlx.mlx_ptr, game->img.enemy.sprite1);
+	mlx_destroy_image(game->mlx.mlx_ptr, game->img.enemy.sprite2);
 	mlx_destroy_image(game->mlx.mlx_ptr, game->img.exitc);
 	mlx_destroy_image(game->mlx.mlx_ptr, game->img.exito);
 	mlx_destroy_image(game->mlx.mlx_ptr, game->img.floor);
