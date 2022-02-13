@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:32:57 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 05:41:18 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 06:16:32 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	move_player(t_game *game, int mv_lin, int mv_col, int key);
 static int	move_verify(t_game *game, int lin, int col, int key);
 static int	valid_key(int key);
-static void	print_moves(long int nbr, int fd);
 
 int	key_mapping(int keysym, t_game *game)
 {
@@ -59,7 +58,6 @@ static void	move_player(t_game *game, int mv_lin, int mv_col, int key)
 		game->pos.y = mv_lin;
 		game->pos.x = mv_col;
 		load_game(game);
-		print_moves(game->moves, 1);
 	}
 }
 
@@ -100,11 +98,4 @@ static int	valid_key(int key)
 	if (key == 'W' || key == 'A' || key == 'S' || key == 'D')
 		return (TRUE);
 	return (FALSE);
-}
-
-static void	print_moves(long int nbr, int fd)
-{
-	ft_putstr("Moves: ");
-	ft_putnbr_fd(nbr, fd);
-	ft_putstr("\n");
 }

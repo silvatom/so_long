@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:45:32 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/12 08:21:06 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 06:05:57 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,6 @@ int		end_game(t_game *game);
 int		load_game(t_game *game);
 int		key_mapping(int keysym, t_game *game);
 void	delta_time(t_game *game);
+void	print_msg_window(t_game *game);
 
 #endif

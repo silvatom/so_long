@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:04 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/12 06:48:01 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 06:18:09 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	load_game(t_game *game)
 			else if (game->map.map[lin][col] == 'F')
 				load_enemy(game, lin, col);
 			col++;
+			print_msg_window(game);
 		}
 		lin++;
 	}
