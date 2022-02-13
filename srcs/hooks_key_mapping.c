@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 21:10:40 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 06:13:15 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 20:40:40 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ static int	valid_key(int key)
 	if (key == W || key == A || key == S || key == D)
 		return (TRUE);
 	if (key == UP_ARROW || key == DOWN_ARROW \
-		|| key == LEFT_ARROW || key != RIGHT_ARROW)
+		|| key == LEFT_ARROW || key == RIGHT_ARROW)
 	{
 		return (TRUE);
 	}
