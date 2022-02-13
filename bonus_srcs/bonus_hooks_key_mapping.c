@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:32:57 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 06:16:32 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 19:49:55 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	move_player(t_game *game, int mv_lin, int mv_col, int key)
 		game->map.map[mv_lin][mv_col] = 'P';
 		game->pos.y = mv_lin;
 		game->pos.x = mv_col;
+		mlx_clear_window(game->mlx.mlx_ptr, game->mlx.win_ptr);
 		load_game(game);
 	}
 }

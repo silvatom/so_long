@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 05:22:30 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 20:06:56 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # endif
 # define IMG_SIZE 64
 
+# define GAME_NAME "so_long"
 # define P_DOWN "./imgs/player/p_down.xpm"
 # define EXIT_O "./imgs/exit/opened_exit.xpm"
 # define EXIT_C "./imgs/exit/closed_exit.xpm"

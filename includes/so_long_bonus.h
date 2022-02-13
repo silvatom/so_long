@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 05:45:32 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 06:05:57 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 19:39:38 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # endif
 # define IMG_SIZE 64
 
+# define GAME_NAME "so_long"
 # define P_DOWN "./imgs/player/p_down.xpm"
 # define P_UP "./imgs/player/p_up.xpm"
 # define P_RIGHT "./imgs/player/p_right.xpm"
@@ -42,6 +43,7 @@
 # define COLLECT2 "./imgs/collects/collect2.xpm"
 # define COLLECT3 "./imgs/collects/collect3.xpm"
 # define COLLECT4 "./imgs/collects/collect4.xpm"
+# define STRIPE 16
 
 /* KEYS */
 # define Q 113

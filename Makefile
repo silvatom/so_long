@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/13 07:03:22 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/13 19:09:43 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,7 @@ re: fclean all
 bonus: $(OBJS_BONUS)
 	make -C $(DIR_LIBFT)
 	make -C $(DIR_MLX)
-	$(CC) $(CFLAGS) $(INCFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $(BNS_NAME)
+	$(CC) $(CFLAGS) $(INCFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $(NAME)
 	@echo "Done!"
 
 debug: $(PATH_SRCS)
@@ -121,7 +121,7 @@ valgrind:
 	$@ $(VALGFLAGS) --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) maps/valid_map1.ber
 
 valgrind_bonus:
-	valgrind $(VALGFLAGS) --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(BNS_NAME) maps/bonus_valid_map1.ber
+	valgrind $(VALGFLAGS) --leak-check=full -s --show-leak-kinds=all --track-origins=yes --tool=memcheck ./$(NAME) maps/bonus_valid_map1.ber
 
 $(LIBFT):
 	make -C $(DIR_LIBFT)
