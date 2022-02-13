@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/12 06:25:16 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/13 05:14:00 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,6 +104,7 @@ bonus: $(OBJS_BONUS)
 	make -C $(DIR_LIBFT)
 	make -C $(DIR_MLX)
 	$(CC) $(CFLAGS) $(INCFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $(BNS_NAME)
+	@echo "Done!"
 
 debug: $(PATH_SRCS)
 	$(CC) $(CFLAGS) $(INCFLAGS) $(DBGFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@

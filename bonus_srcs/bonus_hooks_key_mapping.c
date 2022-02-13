@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:32:57 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/12 06:47:18 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 05:41:18 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	key_mapping(int keysym, t_game *game)
 		lin++;
 	else if (keysym == D || keysym == RIGHT_ARROW || keysym == 'D')
 		col++;
-	if (game->game_over == 0 || game->died == 0)
+	if (game->game_over == 0 && game->died == 0)
 		move_player(game, lin, col, keysym);
 	return (FALSE);
 }
@@ -81,7 +81,6 @@ static int	move_verify(t_game *game, int lin, int col, int key)
 	else if (game->map.map[lin][col] == 'F')
 	{
 		game->died = 1;
-		game->game_over = 1;
 		return (0);
 	}
 	if (game->map.map[lin][col] == 'C')

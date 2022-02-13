@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 05:51:25 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 05:22:30 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define ENEMY_2 "./imgs/enemy/enemy2.xpm"
 # define FLOOR "./imgs/map/floor.xpm"
 # define WALL "./imgs/map/wall.xpm"
-# define COLLECTS "./imgs/collects/collect.xpm"
+# define COLLECTS "./imgs/collects/collect1.xpm"
 
 /* KEYS */
 # define Q 113
