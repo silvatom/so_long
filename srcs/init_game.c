@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:48:19 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 20:08:01 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 20:28:14 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	init_game(t_game *game, char *map_arg)
 		return (1);
 	}
 	game->mlx.win_ptr = mlx_new_window(game->mlx.mlx_ptr, \
-		game->map.columns * IMG_SIZE, game->map.lines * IMG_SIZE + 15,
+		game->map.columns * IMG_SIZE, game->map.lines * IMG_SIZE,
 			GAME_NAME);
 	if (game->mlx.win_ptr == NULL)
 	{
