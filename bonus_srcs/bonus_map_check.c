@@ -6,13 +6,14 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:39 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/12 06:23:49 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 07:45:44 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
 static int	check_item(t_game *game, char *rline, int nline);
+static void	invalid_columns(t_game *game, char *rline, int nline, int *invalid);
 
 int	map_check(t_game *game)
 {
@@ -54,11 +55,7 @@ int	column_check(t_game *game, char *map_file)
 	lin = 0;
 	while (rline)
 	{
-		if (check_item(game, rline, lin) != game->map.columns)
-		{
-			if (!invalid)
-				invalid = error_msg("Some lines doesn't match the size!");
-		}
+		invalid_columns(game, rline, lin, &invalid);
 		free(rline);
 		rline = get_next_line(fd);
 		lin++;
@@ -115,4 +112,13 @@ static int	check_item(t_game *game, char *rline, int nline)
 		col++;
 	}
 	return (col);
+}
+
+static void	invalid_columns(t_game *game, char *rline, int nline, int *invalid)
+{
+	if (check_item(game, rline, nline) != game->map.columns)
+	{
+		if (!(*invalid))
+			*invalid = error_msg("Some lines doesn't match the size!");
+	}
 }

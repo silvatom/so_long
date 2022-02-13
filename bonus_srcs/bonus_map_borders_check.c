@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:34 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/12 06:44:35 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 07:08:30 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_border_line(char *line);
 static int	check_border_column(char *line, int map_cols);
-static int	border_chckr(char *line, int nline, int map_lines, int map_columns);
+static int	border_chckr(char *line, int nline, t_game *game);
 
 int	check_borders(t_game *game, char *map_file)
 {
@@ -32,10 +32,7 @@ int	check_borders(t_game *game, char *map_file)
 	{
 		rline = get_next_line(fd);
 		if (!invalid)
-		{
-			if (border_chckr(rline, nline, game->map.lines, game->map.columns))
-				invalid = 1;
-		}
+			invalid += border_chckr(rline, nline, game);
 		free(rline);
 	}
 	rline = get_next_line(fd);
@@ -46,9 +43,9 @@ int	check_borders(t_game *game, char *map_file)
 	return (FALSE);
 }
 
-static int	border_chckr(char *line, int nline, int map_lines, int map_columns)
+static int	border_chckr(char *line, int nline, t_game *game)
 {
-	if (nline == 1 || nline == map_lines)
+	if (nline == 1 || nline == game->map.lines)
 	{
 		if (check_border_line(line))
 		{
@@ -58,7 +55,7 @@ static int	border_chckr(char *line, int nline, int map_lines, int map_columns)
 	}
 	else
 	{
-		if (check_border_column(line, map_columns))
+		if (check_border_column(line, game->map.columns))
 		{
 			error_msg("The map is not surrounded by walls!");
 			return (TRUE);

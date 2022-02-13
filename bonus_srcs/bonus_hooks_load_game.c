@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:33:04 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 06:18:09 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 07:25:55 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,19 @@ int	load_game(t_game *game)
 	int	lin;
 	int	col;
 
-	lin = 0;
+	lin = -1;
 	delta_time(game);
-	while (game->map.map[lin])
+	while (game->map.map[++lin])
 	{
 		col = 0;
 		while (game->map.map[lin][col])
 		{
-			if (game->map.map[lin][col] == '1')
-				load_map(game, lin, col);
-			else if (game->map.map[lin][col] == '0')
+			if (game->map.map[lin][col] == '1'
+				|| game->map.map[lin][col] == '0'
+				|| game->map.map[lin][col] == 'E')
 				load_map(game, lin, col);
 			else if (game->map.map[lin][col] == 'C')
 				load_collects(game, lin, col);
-			else if (game->map.map[lin][col] == 'E')
-				load_map(game, lin, col);
 			else if (game->map.map[lin][col] == 'P')
 				load_player(game, lin, col);
 			else if (game->map.map[lin][col] == 'F')
@@ -44,7 +42,6 @@ int	load_game(t_game *game)
 			col++;
 			print_msg_window(game);
 		}
-		lin++;
 	}
 	return (TRUE);
 }

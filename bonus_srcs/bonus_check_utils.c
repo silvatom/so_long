@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 00:32:45 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 06:55:23 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/13 07:02:13 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ void	print_msg_window(t_game *game)
 
 	y_pos = (game->map.columns * IMG_SIZE) - IMG_SIZE;
 	steps = ft_itoa(game->moves);
-	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 
+	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr,
 		5, 15, 0xFFFFFF, "MOVES:");
-	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 
+	mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr,
 		45, 15, 0xFFFFFF, steps);
 	if (game->died)
-		mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 
+		mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr,
 			y_pos, 15, 0xFFFFFF, "YOU DIED!");
 	if (game->game_over)
-		mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr, 
+		mlx_string_put(game->mlx.mlx_ptr, game->mlx.win_ptr,
 			y_pos, 15, 0xFFFFFF, "YOU WON!");
 	free(steps);
 }
