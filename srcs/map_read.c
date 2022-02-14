@@ -6,14 +6,14 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 21:03:53 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/11 00:34:30 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:54:20 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_lines(t_game *game, char *map_file);
-int	count_columns(t_game *game, char *map_file);
+static int	count_lines(t_game *game, char *map_file);
+static int	count_columns(t_game *game, char *map_file);
 
 int	map_read(t_game *game, char *map_file)
 {
@@ -26,7 +26,7 @@ int	map_read(t_game *game, char *map_file)
 	return (FALSE);
 }
 
-int	count_lines(t_game *game, char *map_file)
+static int	count_lines(t_game *game, char *map_file)
 {
 	char	*rline;
 	int		fd;
@@ -46,7 +46,7 @@ int	count_lines(t_game *game, char *map_file)
 	return (FALSE);
 }
 
-int	count_columns(t_game *game, char *map_file)
+static int	count_columns(t_game *game, char *map_file)
 {
 	int		fd;
 	int		column_s;

@@ -6,7 +6,7 @@
 /*   By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 23:13:50 by anjose-d          #+#    #+#             */
-/*   Updated: 2022/02/13 20:06:56 by anjose-d         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:52:21 by anjose-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <mlx.h>
 # include <X11/X.h>
 # include <X11/keysymdef.h>
-# include <stdio.h>
 
 # define TRUE 1
 # define FALSE 0
