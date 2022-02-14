@@ -6,7 +6,7 @@
 #    By: anjose-d <anjose-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/29 18:06:49 by anjose-d          #+#    #+#              #
-#    Updated: 2022/02/13 19:09:43 by anjose-d         ###   ########.fr        #
+#    Updated: 2022/02/14 21:52:16 by anjose-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@
 
 ### FINAL BINARY
 NAME		=	so_long
+BNS_NAME	=	so_long
 
 ### DIRECTORIES
 DIR_SRCS	=	./srcs
@@ -54,15 +55,14 @@ OBJS		=	$(addprefix $(DIR_OBJS)/, $(SRCS:.c=.o))
 PATH_SRCS	=	$(addprefix $(DIR_SRCS)/, $(SRCS))
 
 ### BONUS
-BNS_NAME	=	$(NAME)_bonus
 BNS_HEADER	=	$(DIR_INCS)/so_long_bonus.h
 DIR_SRCBNS	=	./bonus_srcs
-SRCS_BONUS	=	bonus_$(MAIN) \
-				bonus_check_utils.c \
-				bonus_init_struct.c bonus_init_game.c bonus_init_imgs.c \
-				bonus_map_read.c bonus_map_check.c bonus_map_borders_check.c bonus_map_save.c \
-				bonus_game_end.c \
-				bonus_hooks_load_game.c bonus_hooks_key_mapping.c
+SRCS_BONUS	=	main_bonus.c \
+				check_utils_bonus.c \
+				init_struct_bonus.c init_game_bonus.c init_imgs_bonus.c \
+				map_read_bonus.c map_check_bonus.c map_borders_check_bonus.c map_save_bonus.c \
+				game_end_bonus.c \
+				hooks_load_game_bonus.c hooks_key_mapping_bonus.c
 OBJS_BONUS	=	$(addprefix $(DIR_OBJS)/, $(SRCS_BONUS:.c=.o))	
 PATH_SRCSBNS=	$(addprefix $(DIR_SRCBNS)/, $(SRCS_BONUS)) 		
 
@@ -101,10 +101,7 @@ fclean: clean
 re: fclean all
 
 bonus: $(OBJS_BONUS)
-	make -C $(DIR_LIBFT)
-	make -C $(DIR_MLX)
-	$(CC) $(CFLAGS) $(INCFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $(NAME)
-	@echo "Done!"
+	@make OBJS="$(OBJS_BONUS)" all
 
 debug: $(PATH_SRCS)
 	$(CC) $(CFLAGS) $(INCFLAGS) $(DBGFLAGS) $^ $(INC_LIBFT) $(INC_MLX) -o $@
