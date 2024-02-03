@@ -63,8 +63,8 @@ SRCS_BONUS	=	main_bonus.c \
 				map_read_bonus.c map_check_bonus.c map_borders_check_bonus.c map_save_bonus.c \
 				game_end_bonus.c \
 				hooks_load_game_bonus.c hooks_key_mapping_bonus.c
-OBJS_BONUS	=	$(addprefix $(DIR_OBJS)/, $(SRCS_BONUS:.c=.o))	
-PATH_SRCSBNS=	$(addprefix $(DIR_SRCBNS)/, $(SRCS_BONUS)) 		
+OBJS_BONUS	=	$(addprefix $(DIR_OBJS)/, $(SRCS_BONUS:.c=.o))
+PATH_SRCSBNS=	$(addprefix $(DIR_SRCBNS)/, $(SRCS_BONUS))
 
 ### TARGETS
 # MANDATORY
@@ -86,12 +86,11 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
-	rm -f $(OBJS_BONUS)
+	rm -rf $(DIR_OBJS)
+	rm -rf $(OBJS_BONUS)
 	rm -f debug debug_bonus
 	make $@ -C $(DIR_LIBFT)
 	make $@ -C $(DIR_MLX)
-	
 
 fclean: clean
 	rm -f $(NAME)
@@ -99,6 +98,12 @@ fclean: clean
 	make $@ -C $(DIR_LIBFT)
 
 re: fclean all
+
+run: all
+	./$(NAME) maps/valid_map1.ber
+
+run_bonus: bonus
+	./$(NAME) maps/bonus_valid_map1.ber
 
 bonus: $(OBJS_BONUS)
 	@make OBJS="$(OBJS_BONUS)" all
@@ -126,4 +131,4 @@ $(LIBFT):
 $(MLX):
 	make -C $(DIR_MLX)
 
-.PHONY: all clean fclean re debug debug_bonus norm valgrind valgrind_bonus bonus 
+.PHONY: all clean fclean re debug debug_bonus norm valgrind valgrind_bonus bonus run_bonus run
